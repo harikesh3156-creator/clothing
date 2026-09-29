@@ -1,998 +1,1173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALPHA — 80% OFF Clothing</title>
-    <meta name="description"
-        content="ALPHA clothing — elevated essentials, streetwear and everyday pieces. 80% off everything.">
-
-    <style>
-        :root {
-            --ink: #111;
-            --paper: #f2eee7;
-            --soft: #d9d3ca;
-            --red: #e83d2e;
-            --muted: #6d6a65;
-            --line: #cfc8be;
-            --max: 1480px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            background: var(--paper);
-            color: var(--ink);
-            font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit
-        }
-
-        img {
-            display: block;
-            width: 100%
-        }
-
-        .wrap {
-            width: min(var(--max), calc(100% - 56px));
-            margin: auto
-        }
-
-        /* NAV */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 50;
-            background: rgba(242, 238, 231, .88);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(17, 17, 17, .11);
-        }
-
-        .nav {
-            height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 950;
-            letter-spacing: -1px;
-        }
-
-        .logo span {
-            color: var(--red)
-        }
-
-        .navlinks {
-            display: flex;
-            gap: 28px;
-            font-size: 10px;
-            letter-spacing: 1.5px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .navlinks a:hover {
-            color: var(--red)
-        }
-
-        .nav-sale {
-            background: var(--ink);
-            color: #fff;
-            padding: 12px 15px;
-            font-size: 10px;
-            letter-spacing: 1px;
-            font-weight: 950;
-        }
-
-        /* HERO */
-        .hero {
-            padding-top: 76px;
-            min-height: 92vh;
-            display: grid;
-            grid-template-columns: .9fr 1.1fr;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .hero-left {
-            padding: 72px 56px 62px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .eyebrow {
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            margin-top: 20px;
-            font-size: clamp(70px, 10vw, 155px);
-            line-height: .78;
-            letter-spacing: -8px;
-            text-transform: uppercase;
-            font-weight: 950;
-        }
-
-        .hero h1 span {
-            display: block
-        }
-
-        .hero h1 .red {
-            color: var(--red)
-        }
-
-        .hero-copy {
-            max-width: 490px;
-            color: var(--muted);
-            font-size: 14px;
-            line-height: 1.8;
-            margin-top: 28px;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 24px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 20px;
-            font-size: 10px;
-            font-weight: 950;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .btn-dark {
-            background: var(--ink);
-            color: #fff
-        }
-
-        .btn-red {
-            background: var(--red);
-            color: #fff
-        }
-
-        .hero-small {
-            display: flex;
-            gap: 26px;
-            border-top: 1px solid var(--line);
-            padding-top: 16px;
-            margin-top: 46px;
-        }
-
-        .hero-small div {
-            min-width: 95px
-        }
-
-        .hero-small strong {
-            display: block;
-            font-size: 18px
-        }
-
-        .hero-small span {
-            display: block;
-            margin-top: 4px;
-            color: var(--muted);
-            font-size: 9px;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-        }
-
-        .hero-right {
-            position: relative;
-            min-height: calc(92vh - 76px);
-            overflow: hidden;
-            background: #bdb6ac;
-            border-left: 1px solid var(--line);
-        }
-
-        .hero-right img {
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: saturate(.78);
-        }
-
-        .hero-stamp {
-            position: absolute;
-            top: 26px;
-            left: 26px;
-            background: var(--red);
-            color: #fff;
-            padding: 13px 15px;
-            font-size: 12px;
-            line-height: 1.05;
-            font-weight: 950;
-        }
-
-        .hero-caption {
-            position: absolute;
-            right: 24px;
-            bottom: 24px;
-            padding: 12px 14px;
-            background: rgba(242, 238, 231, .88);
-            font-size: 9px;
-            font-weight: 900;
-            letter-spacing: 1.4px;
-            text-transform: uppercase;
-        }
-
-        /* MARQUEE */
-        .marquee {
-            overflow: hidden;
-            white-space: nowrap;
-            background: var(--ink);
-            color: #fff;
-            border-bottom: 1px solid var(--ink);
-        }
-
-        .marquee-track {
-            display: inline-block;
-            padding: 17px 0;
-            font-size: 10px;
-            letter-spacing: 3px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .marquee-track span {
-            margin-right: 55px
-        }
-
-        .marquee-track b {
-            color: var(--red)
-        }
-
-        /* FEATURED GRID */
-        .section {
-            padding: 110px 0
-        }
-
-        .section-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 30px;
-            margin-bottom: 38px;
-        }
-
-        .kicker {
-            color: var(--red);
-            font-size: 10px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .section-title {
-            font-size: clamp(44px, 7vw, 88px);
-            line-height: .88;
-            letter-spacing: -5px;
-            font-weight: 950;
-            text-transform: uppercase;
-            margin-top: 8px;
-        }
-
-        .section-desc {
-            max-width: 330px;
-            color: var(--muted);
-            font-size: 12px;
-            line-height: 1.75;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: 1.15fr .85fr .85fr;
-            grid-template-areas:
-                "a b c"
-                "a d d";
-            gap: 16px;
-        }
-
-        .product {
-            background: #e7e0d7;
-            border: 1px solid var(--line)
-        }
-
-        .product:nth-child(1) {
-            grid-area: a
-        }
-
-        .product:nth-child(2) {
-            grid-area: b
-        }
-
-        .product:nth-child(3) {
-            grid-area: c
-        }
-
-        .product:nth-child(4) {
-            grid-area: d
-        }
-
-        .product-img {
-            background: #d0c8bf;
-            overflow: hidden
-        }
-
-        .product:nth-child(1) .product-img {
-            height: 560px
-        }
-
-        .product:nth-child(2) .product-img,
-        .product:nth-child(3) .product-img {
-            height: 335px
-        }
-
-        .product:nth-child(4) .product-img {
-            height: 300px
-        }
-
-        .product-img img {
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(.72);
-            transition: transform .6s ease;
-        }
-
-        .product:hover .product-img img {
-            transform: scale(1.035)
-        }
-
-        .product-info {
-            padding: 18px
-        }
-
-        .product-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            align-items: start;
-        }
-
-        .product-name {
-            font-size: 17px;
-            font-weight: 900
-        }
-
-        .product-type {
-            color: var(--red);
-            font-size: 9px;
-            letter-spacing: 1.7px;
-            font-weight: 950;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 14px;
-        }
-
-        .old {
-            text-decoration: line-through;
-            color: #8b857c
-        }
-
-        .new {
-            font-size: 22px;
-            font-weight: 950
-        }
-
-        .off {
-            margin-left: auto;
-            background: var(--red);
-            color: #fff;
-            padding: 5px 7px;
-            font-size: 9px;
-            font-weight: 950;
-        }
-
-        .order {
-            display: block;
-            margin-top: 16px;
-            border: 1px solid #9f978d;
-            padding: 11px;
-            text-align: center;
-            font-size: 10px;
-            font-weight: 950;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .order:hover {
-            background: var(--ink);
-            color: #fff;
-            border-color: var(--ink)
-        }
-
-        /* CATEGORY TILES */
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-
-        .category {
-            min-height: 300px;
-            position: relative;
-            overflow: hidden;
-            background: #d3cbc1;
-        }
-
-        .category img {
-            position: absolute;
-            inset: 0;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(.2);
-            opacity: .72;
-            transition: transform .6s ease, opacity .4s ease;
-        }
-
-        .category:hover img {
-            transform: scale(1.05);
-            opacity: .86
-        }
-
-        .category-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0, 0, 0, .04), rgba(0, 0, 0, .65));
-        }
-
-        .category-content {
-            position: absolute;
-            left: 18px;
-            right: 18px;
-            bottom: 18px;
-            color: #fff;
-        }
-
-        .category-content small {
-            color: #fff;
-            font-size: 9px;
-            letter-spacing: 2px;
-            font-weight: 900;
-        }
-
-        .category-content h3 {
-            margin-top: 5px;
-            font-size: 30px;
-            letter-spacing: -1px;
-            font-weight: 950;
-        }
-
-        /* OFFER */
-        .offer {
-            margin: 0 0 110px;
-            background: var(--red);
-            color: #fff;
-            padding: 58px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .offer h2 {
-            font-size: clamp(46px, 7vw, 90px);
-            line-height: .82;
-            letter-spacing: -5px;
-            font-weight: 950;
-        }
-
-        .offer p {
-            margin-top: 10px;
-            font-size: 12px
-        }
-
-        .offer a {
-            background: #fff;
-            color: var(--ink);
-            padding: 16px 21px;
-            font-size: 10px;
-            font-weight: 950;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        /* EDITORIAL */
-        .editorial {
-            display: grid;
-            grid-template-columns: .82fr 1.18fr;
-            gap: 70px;
-            align-items: center;
-        }
-
-        .editorial-img {
-            height: 650px;
-            background: #c4bcb3;
-            overflow: hidden;
-        }
-
-        .editorial-img img {
-            height: 100%;
-            object-fit: cover;
-            filter: saturate(.7);
-        }
-
-        .editorial-copy h2 {
-            font-size: clamp(48px, 6vw, 84px);
-            line-height: .87;
-            letter-spacing: -5px;
-            font-weight: 950;
-            text-transform: uppercase;
-        }
-
-        .editorial-copy h2 span {
-            color: var(--red)
-        }
-
-        .editorial-copy p {
-            max-width: 500px;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.9;
-            margin: 26px 0;
-        }
-
-        .specs {
-            border-top: 1px solid var(--line)
-        }
-
-        .spec {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--line);
-            font-size: 11px;
-        }
-
-        .spec span:last-child {
-            color: var(--muted)
-        }
-
-        /* FINAL */
-        .final {
-            padding: 110px 0;
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-            text-align: center;
-        }
-
-        .final h2 {
-            font-size: clamp(55px, 10vw, 130px);
-            line-height: .8;
-            letter-spacing: -7px;
-            font-weight: 950;
-            text-transform: uppercase;
-        }
-
-        .final h2 span {
-            color: var(--red)
-        }
-
-        .final p {
-            max-width: 520px;
-            margin: 25px auto 0;
-            color: var(--muted);
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        .final a {
-            display: inline-block;
-            margin-top: 25px;
-            background: #25D366;
-            color: #071008;
-            padding: 16px 23px;
-            font-size: 10px;
-            font-weight: 950;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        footer {
-            padding: 28px 0;
-            color: #777168;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.3px;
-        }
-
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px
-        }
-
-        .footer strong {
-            color: #333
-        }
-
-        @media(max-width:950px) {
-            .wrap {
-                width: min(var(--max), calc(100% - 34px))
-            }
-
-            .navlinks {
-                display: none
-            }
-
-            .hero {
-                grid-template-columns: 1fr
-            }
-
-            .hero-left {
-                padding: 76px 0 55px
-            }
-
-            .hero-right {
-                min-height: 68vh;
-                border-left: 0;
-                border-top: 1px solid var(--line)
-            }
-
-            .products {
-                grid-template-columns: 1fr 1fr;
-                grid-template-areas: "a a" "b c" "d d"
-            }
-
-            .categories {
-                grid-template-columns: 1fr 1fr
-            }
-
-            .editorial {
-                grid-template-columns: 1fr;
-                gap: 38px
-            }
-
-            .editorial-img {
-                height: 500px
-            }
-
-            .offer {
-                display: block
-            }
-
-            .offer a {
-                display: inline-block;
-                margin-top: 23px
-            }
-        }
-
-        @media(max-width:560px) {
-            .products {
-                grid-template-columns: 1fr;
-                grid-template-areas: "a" "b" "c" "d"
-            }
-
-            .categories {
-                grid-template-columns: 1fr
-            }
-
-            .hero h1 {
-                font-size: 67px
-            }
-
-            .hero-small {
-                gap: 17px
-            }
-
-            .product:nth-child(1) .product-img {
-                height: 430px
-            }
-
-            .product:nth-child(2) .product-img,
-            .product:nth-child(3) .product-img,
-            .product:nth-child(4) .product-img {
-                height: 300px
-            }
-
-            .section {
-                padding: 82px 0
-            }
-
-            .section-head {
-                display: block
-            }
-
-            .section-desc {
-                margin-top: 14px
-            }
-
-            .offer {
-                padding: 44px 28px
-            }
-
-            .footer {
-                display: block;
-                line-height: 2
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALPHA — 80% OFF Clothing</title>
+<meta name="description" content="ALPHA clothing — streetwear, essentials, denim and everyday fits. 80% off everything.">
+
+<style>
+:root{
+  --ink:#111111;
+  --paper:#f2eee7;
+  --soft:#d9d3ca;
+  --red:#e83d2e;
+  --muted:#6d6a65;
+  --line:#cfc8be;
+  --green:#25D366;
+  --green-dark:#071008;
+  --max:1480px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%}
+
+.wrap{
+  width:min(var(--max),calc(100% - 56px));
+  margin:auto;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:50;
+  background:rgba(242,238,231,.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(17,17,17,.11);
+}
+
+.nav{
+  height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:950;
+  letter-spacing:-1px;
+}
+
+.logo span{color:var(--red)}
+
+.navlinks{
+  display:flex;
+  gap:28px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.navlinks a:hover{color:var(--red)}
+
+.nav-sale{
+  background:var(--ink);
+  color:#fff;
+  padding:12px 15px;
+  font-size:10px;
+  letter-spacing:1px;
+  font-weight:950;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  padding-top:76px;
+  min-height:92vh;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  border-bottom:1px solid var(--line);
+}
+
+.hero-left{
+  padding:72px 56px 62px 0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.eyebrow{
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  margin-top:20px;
+  font-size:clamp(70px,10vw,155px);
+  line-height:.78;
+  letter-spacing:-8px;
+  text-transform:uppercase;
+  font-weight:950;
+}
+
+.hero h1 span{display:block}
+.hero h1 .red{color:var(--red)}
+
+.hero-copy{
+  max-width:490px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+  margin-top:28px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:24px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px 20px;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.btn-dark{
+  background:var(--ink);
+  color:#fff;
+}
+
+.wa-hero{
+  background:var(--green)!important;
+  color:var(--green-dark)!important;
+  border-color:var(--green)!important;
+  display:inline-flex;
+  align-items:center;
+}
+
+.wa-icon{
+  width:18px;
+  height:18px;
+  display:inline-block;
+  vertical-align:middle;
+  margin-right:8px;
+  flex:none;
+}
+
+.hero-small{
+  display:flex;
+  gap:26px;
+  border-top:1px solid var(--line);
+  padding-top:16px;
+  margin-top:46px;
+}
+
+.hero-small div{min-width:95px}
+
+.hero-small strong{
+  display:block;
+  font-size:18px;
+}
+
+.hero-small span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:9px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.hero-right{
+  position:relative;
+  min-height:calc(92vh - 76px);
+  overflow:hidden;
+  background:#bdb6ac;
+  border-left:1px solid var(--line);
+}
+
+.hero-right img{
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.78);
+}
+
+.hero-stamp{
+  position:absolute;
+  top:26px;
+  left:26px;
+  background:var(--red);
+  color:#fff;
+  padding:13px 15px;
+  font-size:12px;
+  line-height:1.05;
+  font-weight:950;
+}
+
+.hero-caption{
+  position:absolute;
+  right:24px;
+  bottom:24px;
+  padding:12px 14px;
+  background:rgba(242,238,231,.88);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+/* =========================
+   MARQUEE
+========================= */
+
+.marquee{
+  overflow:hidden;
+  white-space:nowrap;
+  background:var(--ink);
+  color:#fff;
+}
+
+.marquee-track{
+  display:inline-block;
+  padding:17px 0;
+  font-size:10px;
+  letter-spacing:3px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+
+.marquee-track span{margin-right:55px}
+.marquee-track b{color:var(--red)}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+  padding:110px 0;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:30px;
+  margin-bottom:38px;
+}
+
+.kicker{
+  color:var(--red);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+
+.section-title{
+  font-size:clamp(44px,7vw,88px);
+  line-height:.88;
+  letter-spacing:-5px;
+  font-weight:950;
+  text-transform:uppercase;
+  margin-top:8px;
+}
+
+.section-desc{
+  max-width:330px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.75;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products{
+  display:grid;
+  grid-template-columns:1.15fr .85fr .85fr;
+  grid-template-areas:
+    "a b c"
+    "a d d";
+  gap:16px;
+}
+
+.product{
+  background:#e7e0d7;
+  border:1px solid var(--line);
+}
+
+.product:nth-child(1){grid-area:a}
+.product:nth-child(2){grid-area:b}
+.product:nth-child(3){grid-area:c}
+.product:nth-child(4){grid-area:d}
+
+.product-img{
+  background:#d0c8bf;
+  overflow:hidden;
+}
+
+.product:nth-child(1) .product-img{height:560px}
+
+.product:nth-child(2) .product-img,
+.product:nth-child(3) .product-img{height:335px}
+
+.product:nth-child(4) .product-img{height:300px}
+
+.product-img img{
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.72);
+  transition:transform .6s ease;
+}
+
+.product:hover .product-img img{
+  transform:scale(1.035);
+}
+
+.product-info{padding:18px}
+
+.product-name{
+  font-size:17px;
+  font-weight:900;
+}
+
+.product-type{
+  color:var(--red);
+  font-size:9px;
+  letter-spacing:1.7px;
+  font-weight:950;
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+
+.price{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+}
+
+.old{
+  text-decoration:line-through;
+  color:#8b857c;
+}
+
+.new{
+  font-size:22px;
+  font-weight:950;
+}
+
+.off{
+  margin-left:auto;
+  background:var(--red);
+  color:#fff;
+  padding:5px 7px;
+  font-size:9px;
+  font-weight:950;
+}
+
+.order{
+  display:block;
+  margin-top:16px;
+  border:1px solid #9f978d;
+  padding:11px;
+  text-align:center;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.order:hover{
+  background:var(--ink);
+  color:#fff;
+  border-color:var(--ink);
+}
+
+/* =========================
+   CATEGORIES
+========================= */
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.category{
+  min-height:300px;
+  position:relative;
+  overflow:hidden;
+  background:#d3cbc1;
+}
+
+.category img{
+  position:absolute;
+  inset:0;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(.2);
+  opacity:.72;
+  transition:transform .6s ease,opacity .4s ease;
+}
+
+.category:hover img{
+  transform:scale(1.05);
+  opacity:.86;
+}
+
+.category-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.65));
+}
+
+.category-content{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  color:#fff;
+}
+
+.category-content small{
+  color:#fff;
+  font-size:9px;
+  letter-spacing:2px;
+  font-weight:900;
+}
+
+.category-content h3{
+  margin-top:5px;
+  font-size:30px;
+  letter-spacing:-1px;
+  font-weight:950;
+}
+
+/* =========================
+   OFFER
+========================= */
+
+.offer{
+  margin:0 0 110px;
+  background:var(--red);
+  color:#fff;
+  padding:58px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+
+.offer h2{
+  font-size:clamp(46px,7vw,90px);
+  line-height:.82;
+  letter-spacing:-5px;
+  font-weight:950;
+}
+
+.offer p{
+  margin-top:10px;
+  font-size:12px;
+}
+
+.offer a{
+  background:#fff;
+  color:var(--ink);
+  padding:16px 21px;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+/* =========================
+   EDITORIAL
+========================= */
+
+.editorial{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:70px;
+  align-items:center;
+}
+
+.editorial-img{
+  height:650px;
+  background:#c4bcb3;
+  overflow:hidden;
+}
+
+.editorial-img img{
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.7);
+}
+
+.editorial-copy h2{
+  font-size:clamp(48px,6vw,84px);
+  line-height:.87;
+  letter-spacing:-5px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+
+.editorial-copy h2 span{color:var(--red)}
+
+.editorial-copy p{
+  max-width:500px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.9;
+  margin:26px 0;
+}
+
+.specs{
+  border-top:1px solid var(--line);
+}
+
+.spec{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+  font-size:11px;
+}
+
+.spec span:last-child{color:var(--muted)}
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final{
+  padding:110px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  text-align:center;
+}
+
+.final h2{
+  font-size:clamp(55px,10vw,130px);
+  line-height:.8;
+  letter-spacing:-7px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+
+.final h2 span{color:var(--red)}
+
+.final p{
+  max-width:520px;
+  margin:25px auto 0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.8;
+}
+
+.final-wa{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:25px;
+  background:var(--green);
+  color:var(--green-dark);
+  padding:16px 23px;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:28px 0;
+  color:#777168;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:1.3px;
+}
+
+.footer{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.footer strong{color:#333}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+  .wrap{width:min(var(--max),calc(100% - 34px))}
+  .navlinks{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:76px 0 55px}
+  .hero-right{
+    min-height:68vh;
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+  .products{
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:
+      "a a"
+      "b c"
+      "d d";
+  }
+  .categories{grid-template-columns:1fr 1fr}
+  .editorial{grid-template-columns:1fr;gap:38px}
+  .editorial-img{height:500px}
+  .offer{display:block}
+  .offer a{
+    display:inline-block;
+    margin-top:23px;
+  }
+}
+
+@media(max-width:560px){
+  .products{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "d";
+  }
+
+  .categories{grid-template-columns:1fr}
+
+  .hero h1{font-size:67px}
+  .hero-small{gap:17px}
+
+  .product:nth-child(1) .product-img{height:430px}
+
+  .product:nth-child(2) .product-img,
+  .product:nth-child(3) .product-img,
+  .product:nth-child(4) .product-img{height:300px}
+
+  .section{padding:82px 0}
+  .section-head{display:block}
+  .section-desc{margin-top:14px}
+  .offer{padding:44px 28px}
+  .footer{display:block;line-height:2}
+}
+</style>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="wrap nav">
-            <a class="logo" href="#">ALPHA<span>.</span></a>
-            <div class="navlinks">
-                <a href="#">New In</a>
-                <a href="#">Women</a>
-                <a href="#">Men</a>
-                <a href="#">Street</a>
-            </div>
-            <a class="nav-sale" href="#">80% OFF</a>
-        </div>
-    </nav>
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <main>
+<nav class="navbar">
+  <div class="wrap nav">
+    <a class="logo" href="#">ALPHA<span>.</span></a>
 
-        <section class="hero">
-            <div class="wrap hero-left">
-                <div>
-                    <div class="eyebrow">ALPHA / CLOTHING</div>
-                    <h1><span>Less</span><span class="red">noise.</span><span>More</span><span>style.</span></h1>
-                    <p class="hero-copy">
-                        An editorial clothing collection built around sharp basics, relaxed fits and everyday pieces.
-                        <strong>Everything is 80% OFF for a limited time.</strong>
-                    </p>
-                    <div class="hero-actions">
-                        <a class="btn btn-dark" href="#">SHOP 80% OFF</a>
-                        <a class="btn btn-red" href="#">ORDER ON WHATSAPP</a>
-                    </div>
-                </div>
+    <div class="navlinks">
+      <a href="#">New In</a>
+      <a href="#">Women</a>
+      <a href="#">Men</a>
+      <a href="#">Street</a>
+    </div>
 
-                <div class="hero-small">
-                    <div><strong>80%</strong><span>Off everything</span></div>
-                    <div><strong>04</strong><span>Core edits</span></div>
-                    <div><strong>01</strong><span>Alpha identity</span></div>
-                </div>
-            </div>
+    <a class="nav-sale" href="#">80% OFF</a>
+  </div>
+</nav>
 
-            <div class="hero-right">
-                <img src="https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1700"
-                    alt="Fashion model wearing contemporary clothing">
-                <div class="hero-stamp">80%<br>OFF<br>EVERYTHING</div>
-                <div class="hero-caption">New season / everyday uniform</div>
-            </div>
-        </section>
+<main>
 
-        <div class="marquee">
-            <div class="marquee-track">
-                <span>Streetwear <b>•</b></span>
-                <span>Essentials <b>•</b></span>
-                <span>Oversized <b>•</b></span>
-                <span>Denim <b>•</b></span>
-                <span>Outerwear <b>•</b></span>
-                <span>Everyday <b>•</b></span>
-            </div>
-        </div>
+<!-- =========================
+     HERO
+========================= -->
 
-        <section class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div>
-                        <div class="kicker">01 / COLLECTION</div>
-                        <h2 class="section-title">The edit.</h2>
-                    </div>
-                    <p class="section-desc">Four everyday pieces. One clean wardrobe. Every item currently marked down
-                        by 80%.</p>
-                </div>
+<section class="hero">
 
-                <div class="products">
-                    <article class="product">
-                        <div class="product-img"><img
-                                src="https://images.pexels.com/photos/9558699/pexels-photo-9558699.jpeg?auto=compress&cs=tinysrgb&w=1300"
-                                alt="Oversized t-shirt"></div>
-                        <div class="product-info">
-                            <div class="product-type">01 / ESSENTIALS</div>
-                            <div class="product-top">
-                                <div class="product-name">Alpha Oversized Tee</div>
-                            </div>
-                            <div class="price"><span class="old">₹1,499</span><span class="new">₹299</span><span
-                                    class="off">80% OFF</span></div>
-                            <a class="order" href="#">Order on WhatsApp</a>
-                        </div>
-                    </article>
+  <div class="wrap hero-left">
 
-                    <article class="product">
-                        <div class="product-img"><img
-                                src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1100"
-                                alt="Casual top"></div>
-                        <div class="product-info">
-                            <div class="product-type">02 / STREET</div>
-                            <div class="product-top">
-                                <div class="product-name">Alpha Box Shirt</div>
-                            </div>
-                            <div class="price"><span class="old">₹1,999</span><span class="new">₹399</span><span
-                                    class="off">80% OFF</span></div>
-                            <a class="order" href="#">Order on WhatsApp</a>
-                        </div>
-                    </article>
+    <div>
+      <div class="eyebrow">ALPHA / CLOTHING</div>
 
-                    <article class="product">
-                        <div class="product-img"><img
-                                src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1100"
-                                alt="Denim styling"></div>
-                        <div class="product-info">
-                            <div class="product-type">03 / DENIM</div>
-                            <div class="product-top">
-                                <div class="product-name">Alpha Straight Denim</div>
-                            </div>
-                            <div class="price"><span class="old">₹2,499</span><span class="new">₹499</span><span
-                                    class="off">80% OFF</span></div>
-                            <a class="order" href="#">Order on WhatsApp</a>
-                        </div>
-                    </article>
+      <h1>
+        <span>Less</span>
+        <span class="red">noise.</span>
+        <span>More</span>
+        <span>style.</span>
+      </h1>
 
-                    <article class="product">
-                        <div class="product-img"><img
-                                src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1300"
-                                alt="Layered fashion look"></div>
-                        <div class="product-info">
-                            <div class="product-type">04 / LAYERING</div>
-                            <div class="product-top">
-                                <div class="product-name">Alpha Essential Hoodie</div>
-                            </div>
-                            <div class="price"><span class="old">₹2,999</span><span class="new">₹599</span><span
-                                    class="off">80% OFF</span></div>
-                            <a class="order" href="#">Order on WhatsApp</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+      <p class="hero-copy">
+        An editorial clothing collection built around sharp basics,
+        relaxed fits and everyday pieces.
+        <strong>Everything is 80% OFF for a limited time.</strong>
+      </p>
 
-        <section class="section">
-            <div class="wrap">
-                <div class="section-head">
-                    <div>
-                        <div class="kicker">02 / STYLE</div>
-                        <h2 class="section-title">Choose your lane.</h2>
-                    </div>
-                    <p class="section-desc">Street, denim, essentials or layers — build the look around your own style.
-                    </p>
-                </div>
+      <div class="hero-actions">
 
-                <div class="categories">
-                    <div class="category">
-                        <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                            alt="Streetwear clothing">
-                        <div class="category-overlay"></div>
-                        <div class="category-content"><small>01</small>
-                            <h3>STREET</h3>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                            alt="Denim">
-                        <div class="category-overlay"></div>
-                        <div class="category-content"><small>02</small>
-                            <h3>DENIM</h3>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                            alt="Essentials">
-                        <div class="category-overlay"></div>
-                        <div class="category-content"><small>03</small>
-                            <h3>ESSENTIALS</h3>
-                        </div>
-                    </div>
-                    <div class="category">
-                        <img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1000"
-                            alt="Outerwear">
-                        <div class="category-overlay"></div>
-                        <div class="category-content"><small>04</small>
-                            <h3>LAYERS</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <a class="btn btn-dark" href="#">
+          SHOP 80% OFF
+        </a>
 
-        <div class="wrap">
-            <div class="offer">
-                <div>
-                    <div class="eyebrow" style="color:#fff;margin-bottom:12px">LIMITED-TIME ALPHA SALE</div>
-                    <h2>80% OFF.<br>EVERYTHING.</h2>
-                    <p>Build your wardrobe for a fraction of the price.</p>
-                </div>
-                <a href="#">CLAIM THE OFFER →</a>
-            </div>
+        <!-- GREEN WHATSAPP HERO BUTTON -->
+        <a class="btn wa-hero" href="#" aria-label="Open WhatsApp">
+          <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true">
+            <path fill="currentColor" d="M16 3.2A12.8 12.8 0 0 0 5.2 22.9L3.3 28.7l6-1.9A12.8 12.8 0 1 0 16 3.2Zm0 23.3a10.5 10.5 0 0 1-5.4-1.5l-.4-.2-3.6 1.1 1.1-3.5-.3-.4A10.5 10.5 0 1 1 16 26.5Zm5.8-7.8c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.3-1.5-1.5-1.8-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.9 3 4.7 4.1.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.1-1.3-.1-.1-.3-.2-.5-.3Z"/>
+          </svg>
+          WHATSAPP
+        </a>
+
+      </div>
+    </div>
+
+    <div class="hero-small">
+      <div>
+        <strong>80%</strong>
+        <span>Off everything</span>
+      </div>
+
+      <div>
+        <strong>04</strong>
+        <span>Core edits</span>
+      </div>
+
+      <div>
+        <strong>01</strong>
+        <span>Alpha identity</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero-right">
+    <img
+      src="https://images.pexels.com/photos/994523/pexels-photo-994523.jpeg?auto=compress&cs=tinysrgb&w=1700"
+      alt="Fashion model wearing contemporary clothing"
+    >
+
+    <div class="hero-stamp">
+      80%<br>
+      OFF<br>
+      EVERYTHING
+    </div>
+
+    <div class="hero-caption">
+      New season / everyday uniform
+    </div>
+  </div>
+
+</section>
+
+<!-- =========================
+     MARQUEE
+========================= -->
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Streetwear <b>•</b></span>
+    <span>Essentials <b>•</b></span>
+    <span>Oversized <b>•</b></span>
+    <span>Denim <b>•</b></span>
+    <span>Outerwear <b>•</b></span>
+    <span>Everyday <b>•</b></span>
+  </div>
+</div>
+
+<!-- =========================
+     COLLECTION
+========================= -->
+
+<section class="section">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">01 / COLLECTION</div>
+        <h2 class="section-title">The edit.</h2>
+      </div>
+
+      <p class="section-desc">
+        Four everyday pieces. One clean wardrobe.
+        Every item currently marked down by 80%.
+      </p>
+
+    </div>
+
+    <div class="products">
+
+      <article class="product">
+
+        <div class="product-img">
+          <img
+            src="https://images.pexels.com/photos/9558699/pexels-photo-9558699.jpeg?auto=compress&cs=tinysrgb&w=1300"
+            alt="Oversized t-shirt"
+          >
         </div>
 
-        <section class="section">
-            <div class="wrap editorial">
-                <div class="editorial-img">
-                    <img src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1400"
-                        alt="Contemporary street style">
-                </div>
-                <div class="editorial-copy">
-                    <div class="kicker">03 / THE ALPHA STANDARD</div>
-                    <h2>Own the <span>look.</span></h2>
-                    <p>Clean cuts, uncomplicated silhouettes and pieces designed to work together. ALPHA is built around
-                        clothes you can reach for every day without overthinking the outfit.</p>
-                    <div class="specs">
-                        <div class="spec"><span>Fit</span><span>Relaxed / Clean</span></div>
-                        <div class="spec"><span>Style</span><span>Modern / Street</span></div>
-                        <div class="spec"><span>Offer</span><span>80% OFF</span></div>
-                        <div class="spec"><span>Ordering</span><span>Direct WhatsApp</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="product-info">
+          <div class="product-type">01 / ESSENTIALS</div>
+          <div class="product-name">Alpha Oversized Tee</div>
 
-        <section class="final">
-            <div class="wrap">
-                <div class="eyebrow">04 / YOUR NEXT FIT</div>
-                <h2>MAKE IT <span>ALPHA.</span></h2>
-                <p>Pick your pieces, claim the 80% offer and speak directly with ALPHA on WhatsApp.</p>
-                <a href="#">WHATSAPP — 👋 I NEED 🆔️</a>
-            </div>
-        </section>
+          <div class="price">
+            <span class="old">₹1,499</span>
+            <span class="new">₹299</span>
+            <span class="off">80% OFF</span>
+          </div>
 
-    </main>
-
-    <footer>
-        <div class="wrap footer">
-            <div><strong>ALPHA CLOTHING</strong> — Street / Essentials / Everyday</div>
-            <div>80% OFF EVERYTHING · © 2026</div>
+          <a class="order" href="#">Order on WhatsApp</a>
         </div>
-    </footer>
 
-    <script>
-        (function () {
-            const phone = "917728972180";
-            const message = String.fromCodePoint(0x1F44B) + " I need " + String.fromCodePoint(0x1F194, 0xFE0F);
-            const whatsappURL = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+      </article>
 
-            document.querySelectorAll("a").forEach(function (a) {
-                a.href = whatsappURL;
-                a.removeAttribute("target");
-                a.removeAttribute("rel");
-            });
+      <article class="product">
 
-            document.addEventListener("click", function (e) {
-                if (!e.target.closest("a")) {
-                    window.location.href = whatsappURL;
-                }
-            });
-        })();
-    </script>
+        <div class="product-img">
+          <img
+            src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1100"
+            alt="Casual top"
+          >
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">02 / STREET</div>
+          <div class="product-name">Alpha Box Shirt</div>
+
+          <div class="price">
+            <span class="old">₹1,999</span>
+            <span class="new">₹399</span>
+            <span class="off">80% OFF</span>
+          </div>
+
+          <a class="order" href="#">Order on WhatsApp</a>
+        </div>
+
+      </article>
+
+      <article class="product">
+
+        <div class="product-img">
+          <img
+            src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1100"
+            alt="Denim styling"
+          >
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">03 / DENIM</div>
+          <div class="product-name">Alpha Straight Denim</div>
+
+          <div class="price">
+            <span class="old">₹2,499</span>
+            <span class="new">₹499</span>
+            <span class="off">80% OFF</span>
+          </div>
+
+          <a class="order" href="#">Order on WhatsApp</a>
+        </div>
+
+      </article>
+
+      <article class="product">
+
+        <div class="product-img">
+          <img
+            src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1300"
+            alt="Layered fashion look"
+          >
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">04 / LAYERING</div>
+          <div class="product-name">Alpha Essential Hoodie</div>
+
+          <div class="price">
+            <span class="old">₹2,999</span>
+            <span class="new">₹599</span>
+            <span class="off">80% OFF</span>
+          </div>
+
+          <a class="order" href="#">Order on WhatsApp</a>
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="section">
+
+  <div class="wrap">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">02 / STYLE</div>
+        <h2 class="section-title">Choose your lane.</h2>
+      </div>
+
+      <p class="section-desc">
+        Street, denim, essentials or layers —
+        build the look around your own style.
+      </p>
+
+    </div>
+
+    <div class="categories">
+
+      <div class="category">
+        <img
+          src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=1000"
+          alt="Streetwear clothing"
+        >
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <small>01</small>
+          <h3>STREET</h3>
+        </div>
+      </div>
+
+      <div class="category">
+        <img
+          src="https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&w=1000"
+          alt="Denim"
+        >
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <small>02</small>
+          <h3>DENIM</h3>
+        </div>
+      </div>
+
+      <div class="category">
+        <img
+          src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1000"
+          alt="Essentials"
+        >
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <small>03</small>
+          <h3>ESSENTIALS</h3>
+        </div>
+      </div>
+
+      <div class="category">
+        <img
+          src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1000"
+          alt="Outerwear"
+        >
+        <div class="category-overlay"></div>
+        <div class="category-content">
+          <small>04</small>
+          <h3>LAYERS</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- =========================
+     OFFER
+========================= -->
+
+<div class="wrap">
+
+  <div class="offer">
+
+    <div>
+      <div class="eyebrow" style="color:#fff;margin-bottom:12px">
+        LIMITED-TIME ALPHA SALE
+      </div>
+
+      <h2>80% OFF.<br>EVERYTHING.</h2>
+      <p>Build your wardrobe for a fraction of the price.</p>
+    </div>
+
+    <a href="#">CLAIM THE OFFER →</a>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     EDITORIAL
+========================= -->
+
+<section class="section">
+
+  <div class="wrap editorial">
+
+    <div class="editorial-img">
+      <img
+        src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1400"
+        alt="Contemporary street style"
+      >
+    </div>
+
+    <div class="editorial-copy">
+
+      <div class="kicker">03 / THE ALPHA STANDARD</div>
+
+      <h2>Own the <span>look.</span></h2>
+
+      <p>
+        Clean cuts, uncomplicated silhouettes and pieces designed
+        to work together. ALPHA is built around clothes you can
+        reach for every day without overthinking the outfit.
+      </p>
+
+      <div class="specs">
+        <div class="spec">
+          <span>Fit</span>
+          <span>Relaxed / Clean</span>
+        </div>
+
+        <div class="spec">
+          <span>Style</span>
+          <span>Modern / Street</span>
+        </div>
+
+        <div class="spec">
+          <span>Offer</span>
+          <span>80% OFF</span>
+        </div>
+
+        <div class="spec">
+          <span>Ordering</span>
+          <span>Direct WhatsApp</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section class="final">
+
+  <div class="wrap">
+
+    <div class="eyebrow">04 / YOUR NEXT FIT</div>
+
+    <h2>MAKE IT <span>ALPHA.</span></h2>
+
+    <p>
+      Pick your pieces, claim the 80% offer and speak directly
+      with ALPHA on WhatsApp.
+    </p>
+
+    <!-- ONLY WHATSAPP IN FINAL CTA -->
+    <a class="final-wa" href="#" aria-label="Open WhatsApp">
+      <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="currentColor" d="M16 3.2A12.8 12.8 0 0 0 5.2 22.9L3.3 28.7l6-1.9A12.8 12.8 0 1 0 16 3.2Zm0 23.3a10.5 10.5 0 0 1-5.4-1.5l-.4-.2-3.6 1.1 1.1-3.5-.3-.4A10.5 10.5 0 1 1 16 26.5Zm5.8-7.8c-.3-.1-1.6-.8-1.8-.9-.2-.1-.4-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.3-1.5-1.5-1.8-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.3.3-.5.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.6 1.1 2.8c.1.2 1.9 3 4.7 4.1.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.1-1.3-.1-.1-.3-.2-.5-.3Z"/>
+      </svg>
+      WHATSAPP
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+
+  <div class="wrap footer">
+
+    <div>
+      <strong>ALPHA CLOTHING</strong>
+      — Street / Essentials / Everyday
+    </div>
+
+    <div>
+      80% OFF EVERYTHING · © 2026
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- =========================
+     WHATSAPP BEHAVIOUR
+========================= -->
+
+<script>
+(function(){
+
+  // Current WhatsApp number:
+  // +91 77289 72180
+  const phone = "917728972180";
+
+  // Exact requested message:
+  // 👋 I need 🆔️
+  // Build it with Unicode code points to avoid the replacement-character issue.
+  const message =
+    String.fromCodePoint(0x1F44B) +
+    " I need " +
+    String.fromCodePoint(0x1F194, 0xFE0F);
+
+  const whatsappURL =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(message);
+
+  // Every visible link opens WhatsApp.
+  document.querySelectorAll("a").forEach(function(link){
+    link.href = whatsappURL;
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
+  });
+
+  // Tapping anywhere else on the page also opens WhatsApp.
+  document.addEventListener("click", function(event){
+    if(!event.target.closest("a")){
+      window.location.href = whatsappURL;
+    }
+  });
+
+})();
+</script>
 
 </body>
-
 </html>
